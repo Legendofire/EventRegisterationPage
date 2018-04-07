@@ -1,6 +1,5 @@
 const bodyParser = require('body-parser');
 const express = require('express');
-const fs = require('fs');
 const historyApiFallback = require('connect-history-api-fallback');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -20,7 +19,7 @@ const port = process.env.PORT || 8080;
 
 // Set up Mongoose
 mongoose.connect(isDev ? config.db_dev : config.db, {
-    useMongoClient: true,
+    useMongoClient: true
 });
 mongoose.Promise = global.Promise;
 
@@ -55,7 +54,7 @@ if (isDev) {
     app.use(express.static(path.resolve(__dirname, '../dist')));
 } else {
     app.use(express.static(path.resolve(__dirname, '../dist')));
-    app.get('*', function (req, res) {
+    app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, '../dist/index.html'));
         res.end();
     });

@@ -1,9 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+const attendees = require('./api/attendees');
 
 module.exports = (app) => {
-  // API routes
-  fs.readdirSync(__dirname + '/api/').forEach((file) => {
-    require(`./api/${file.substr(0, file.indexOf('.'))}`)(app);
-  });
+    app.use('/', attendees);
 };
