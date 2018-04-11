@@ -6,26 +6,67 @@ import styled from 'styled-components';
 import { ADD_USER, CHANGE_INPUT } from '../formActions';
 import Input from '../components/Input';
 import Button from '../components/Button';
+import Spinner from '../components/Spinner';
+
+const formSchema = [
+    {
+        name: "email",
+        type: "text",
+        placeholder: "Please enter your Email.",
+        label: "Email*"
+    },
+    {
+        name: "name",
+        type: "text",
+        placeholder: "Please enter your Name.",
+        label: "Name*"
+    },
+    {
+        name: "phone",
+        type: "text",
+        placeholder: "Please enter your Phone.",
+        label: "Phone*"
+    },
+    {
+        name: "startup",
+        type: "text",
+        placeholder: "Please enter your Startup Name.",
+        label: "Startup Name"
+    },
+    {
+        name: "reason",
+        type: "text",
+        placeholder: "Please enter a brief Answer.",
+        label: "Why do you want to attend?*"
+    }
+];
 
 class SignUpForm extends React.Component {
-    // generateForm(){
-    //
-    // }
+    generateForm() {
+        return formSchema.map((element) => {
+            const { valid, error, value } = this.props.form.form[element.name];
+            return (<Input
+                key={element.name}
+                {...element}
+                onChange = {(e) => this.props.handleChange(e.target.name, e.target.value)}
+                value = {value}
+                valid = {valid}
+                error = {valid ? false : error}
+            />);
+        });
+    }
     render() {
-        console.log(this.props);
+        const disable = !this.props.form.allValid;
+        const spinner = this.props.form.adding;
         return (
             <Container>
                 <Form>
-                    <Input type="text"
-                        name="reason"
-                        value={this.props.form.user.reason}
-                        placeholder="Please enter a brief answer."
-                        onChange={(e) => this.props.handleChange(e.target.name, e.target.value)}
-                        label="Why do you want to attend?*" />
+                    {this.generateForm()}
                 </Form>
                 <ButtonContainer>
-                    <Button text="Sign Up" onClick={() => this.props.handleSubmit(this.props.form.user)} />
+                    <Button disable={disable} text="Sign Up" onClick={() => this.props.handleSubmit(this.props.form.form, this.props.form.allValid)} />
                 </ButtonContainer>
+                { spinner ? <Spinner/> : null }
             </Container>
         );
     }

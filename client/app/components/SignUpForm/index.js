@@ -1,27 +1,40 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 import Header from './components/Header';
 import SignUpForm from './containers/SignUpForm';
+import Congrats from './containers/Congrats';
 
-export default class Form extends React.Component {
+class Form extends React.Component {
     render() {
+        const { added } = this.props.form;
+        const headerText = added ? "Thank you for Signing Up we will keep you updated." : "Fill in your Details";
         return (
             <ScrollContainer>
                 <Container>
-                    <Header />
-                    <SignUpForm />
+                    <Header text={headerText} />
+                    {added ? <Congrats /> : <SignUpForm /> }
                 </Container>
             </ScrollContainer>
         );
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        form: state.form
+    };
+}
+
+export default connect(mapStateToProps)(Form);
+
 const ScrollContainer = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   @media (max-width: 1000px) {
     overflow: visible;
+    position: relative
   }
 `;
 

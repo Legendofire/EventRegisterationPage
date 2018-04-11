@@ -6,7 +6,7 @@ export default class Header extends React.Component {
     render() {
         return (
             <Container>
-                Fill in your details.
+                {this.props.text}
             </Container>
         );
     }

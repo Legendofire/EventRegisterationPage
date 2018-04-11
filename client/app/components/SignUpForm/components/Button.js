@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export default class Button extends React.Component {
     render() {
         return (
-            <BasicButton onClick={this.props.onClick} >{this.props.text}</BasicButton>
+            <BasicButton {...this.props}> {this.props.text} </BasicButton>
         );
     }
 }
@@ -18,4 +18,7 @@ const BasicButton = styled.button`
   width: 100%;
   margin-top: 20px;
   font-size: 1.5rem;
+  ${props => props.disable && css`
+      background-color: #81A0C7;
+  `}
 `;
