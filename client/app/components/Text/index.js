@@ -17,6 +17,10 @@ export default class Text extends React.Component {
                         learn how to make a chatbot? Come join us in our Chatbot
                         on Pizza workshop where we combine our love for pizza
                         and our passion for code.
+                        We will Create a Chatbot that orders pizza while eating pizza.
+                    </Body>
+                    <Body>
+                        Have any questions? <br/> Send us an email at <ImportantText>ahmed.ibrahim1@ibm.com</ImportantText>
                     </Body>
                 </TextContainer>
             </Container>

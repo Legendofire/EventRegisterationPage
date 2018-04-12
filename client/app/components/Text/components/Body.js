@@ -4,6 +4,6 @@ export default styled.p`
   font-size: 2em;
   text-align: center;
   @media (max-width: 1000px) {
-    font-size: 2em;
+    font-size: 1.5em;
   }
 `;

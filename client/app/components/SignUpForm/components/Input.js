@@ -38,11 +38,20 @@ const InputField = styled.input`
     border-width: 0px 0px 4px 0px;
     border-color: #dc3545;
   `}
+
+  @media (max-width: 1000px) {
+    height: 1.7rem;
+    font-size: 1em;
+  }
 `;
 
 const Label = styled.label`
   font-size: 2em;
   margin-bottom: 5px;
+  @media (max-width: 1000px) {
+    font-size: 1.4em;
+    margin-bottom: 3px;
+  }
 `;
 
 const ErrorMsg = styled.p`
@@ -54,6 +63,9 @@ const ErrorMsg = styled.p`
   ${props => props.valid && css`
    display: none;
   `}
+  @media (max-width: 1000px) {
+    font-size: 1em;
+  }
 `;
 
 // const ValidIcon = styled.i`

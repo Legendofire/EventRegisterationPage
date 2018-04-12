@@ -17,4 +17,7 @@ const Container = styled.div`
   padding: 10px;
   font-size: 3em;
   width: 100%;
+  @media (max-width: 1000px) {
+    font-size: 2em;
+  }
 `;

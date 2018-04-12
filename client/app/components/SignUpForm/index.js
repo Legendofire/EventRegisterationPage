@@ -9,7 +9,7 @@ import Congrats from './containers/Congrats';
 class Form extends React.Component {
     render() {
         const { added } = this.props.form;
-        const headerText = added ? "Thank you for Signing Up we will keep you updated." : "Fill in your Details";
+        const headerText = added ? "Thank you for Signing Up we will keep you updated." : "Want to Signup? Fill in your Details";
         return (
             <ScrollContainer>
                 <Container>
